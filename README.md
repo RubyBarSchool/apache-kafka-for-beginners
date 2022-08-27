@@ -67,3 +67,11 @@
    * Protobuf
 ```
 <img src="/image/Kafka Theory/Kafka_Message_Serializer.png" alt="Kafka message serializer">
+
+### Kafka Message Key Hashing (Kafka partitioner)
+```bash
+* Kafka partitioner là một đoạn code dùng để ghi lại và xác định partition nào để gửi message đến.
+* Key hasing là một quá trình xác định kết hợp key với một partiyion
+* Default Kafka partitioner, keys sẽ được sử dụng thuật toán "murmur2 algorithm"
+```
+<img src="/image/Kafka Theory/Kafka_Message_Hashing.png" alt="Kafka message hashing">
