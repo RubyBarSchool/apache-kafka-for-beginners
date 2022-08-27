@@ -132,3 +132,20 @@
 Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ liệu bắt đầu từ đây
 ```
 <img src="/image/Kafka Theory/Kafka_Consumers_Offsets.png" alt="Consumer Offsets">
+
+#### Kafka Consumer Group:  Delivery semantics for consumers
+```bash
+* Mặc định, Java Consumer sẽ tự động xác nhận consumer offset (Ít nhất 1 lần)
+* Nếu cọn commit thử công thì có 3 loại delivery semantics
+  * At least once (usually preferred)
+    * Offsets committed sau khi message xử lý xong
+    * Nếu quá trình xử lý xảy ra lỗi, the message sẽ được đọc lại
+    * Điều này làm cho hệ thống phải đọc 2 lần của tin nhắn đó. Cam kết quá trình đọc lại đó không ảnh hưởng tới hệ thống
+  * At most once
+    * Offsets committed khi messages được lấy về thành công
+    * Nếu trong quá trình xử lý bị lỗi, một số message có thể bị mất (Vì commit đã được đẩy lên kaffka lên khi lấy lại sẽ lấy       message tiếp theo chứ ko lấy lại message trước đó.)
+  * Exactly once
+    * For Kafka => Kafka workflows: sử dụng Transactional API(dễ sử dụng với kafka streams API)
+    * For Kafka => External System workflows: Sử dụng idempotent consumer
+```
+<img src="/image/Kafka Theory/Delivery_Semantics_For_Consumers.png" alt="Delivery semantics for consumers">
