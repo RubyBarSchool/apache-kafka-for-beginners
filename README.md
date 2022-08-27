@@ -109,5 +109,6 @@
 * Nếu tồn tại nhiều consumer hơn partitions thì một số consumer sẽ thành inactive
 ```
 <img src="/image/Kafka Theory/Kafka_Consumers_Group.png" alt="Kafka Consumer group">
+
 #### Kafka Consumer Group:  consumer more than partitions.
 <img src="/image/Kafka Theory/Kafka_Consumers_Group_Consumer_More_Than_Partitions.png" alt="Kafka Consumer group consumer more than partitions">
