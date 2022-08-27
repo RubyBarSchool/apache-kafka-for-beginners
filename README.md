@@ -32,3 +32,25 @@
 * Có thể có rất nhiều partitions trong một topic nếu muốn
 ```
 <img src="/image/Kafka Theory/Kafka_Topics_Partitions_Offset.png" alt="Kafka Partitions And Offsets">
+
+### Producers
+
+```bash
+* Producers viết data tới các topics
+* Producers biết phải viết cho partition nào (Kafka broker có điều đó)
+* Nếu kafka broker bị sai, producers sẽ tự động chỉnh sửa
+```
+<img src="/image/Kafka Theory/Producers.png" alt="Kafka producers">
+
+
+### Producers: Message Key
+#### Message key Anatomy
+<img src="/image/Kafka Theory/Kafka_Messages_Anatomy.png" alt="Kafka producers message key">
+
+```bash
+* Producers có thể chọn gửi một khóa cùng với message (Key có thể là string, number, binary, ...)
+* Nếu key = null, data sẽ được gửi vòng quanh (Partition 0, then 1, then 2, ..)
+* Nếu key != null, tất cả message sẽ luôn luôn được gửi đến same partition (Mã hashing)
+* Đặt key khi mà chúng ta muốn message sắp xếp theo một trường cụ thể
+```
+<img src="/image/Kafka Theory/Producers_Message_Key.png" alt="Kafka producers message key">
