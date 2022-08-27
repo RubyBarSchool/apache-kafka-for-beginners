@@ -87,3 +87,16 @@
   cao trong 1 partitions
 ```
 <img src="/image/Kafka Theory/Kafka_Consumers.png" alt="Kafka Consumer">
+
+### Kafka Consumer Deserializer
+```bash
+* Consumer sẽ chuyển đổi bytes sang objects/data
+* Consumer sử dụng key và value của message để chuyển
+* Một số Deserializers thông dụng
+   * String (incl.JSON)
+   * Int, Float
+   * Avro
+   * Protobuf
+* Kiểu Serialization/deserialization không được thay đổi trong vòng đời của một topic. Đó là lý do tại sao không được phép     thay đổi dữ liệu trong topic vì nếu consumer sử dụng deserialization int mà người dùng sửa dữ liệu thành chuỗi thì sẽ bị     lỗi
+```
+<img src="/image/Kafka Theory/Kafka_Consumers_Deserializer.png" alt="Kafka Consumer deserializer">
