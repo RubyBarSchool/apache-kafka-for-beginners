@@ -45,7 +45,7 @@
 
 ### Producers: Message Key
 #### Message key Anatomy
-<img src="/image/Kafka Theory/Kafka_Messages_Anatomy.png" alt="Kafka producers message key">
+<img src="/image/Kafka Theory/Kafka_Messages_Anatomy.png" alt="Kafka message key anatomy">
 
 ```bash
 * Producers có thể chọn gửi một khóa cùng với message (Key có thể là string, number, binary, ...)
@@ -54,3 +54,16 @@
 * Đặt key khi mà chúng ta muốn message sắp xếp theo một trường cụ thể
 ```
 <img src="/image/Kafka Theory/Producers_Message_Key.png" alt="Kafka producers message key">
+
+### Kafka Message Serializer
+```bash
+* Kafka chỉ chấp nhận bytes là đầu vào từ producers và Kafka gửi bytes đầu ra cho consumers
+* Message Serialization có nghĩa là chuyển đổi objects hoặc data sang bytes
+* Serialization chỉ sử dụng giá trị và khóa
+* Một số Serializer thông dụng
+   * String (incl.JSON)
+   * Int, Float
+   * Avro
+   * Protobuf
+```
+<img src="/image/Kafka Theory/Kafka_Message_Serializer.png" alt="Kafka message serializer">
