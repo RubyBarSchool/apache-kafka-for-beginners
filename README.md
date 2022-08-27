@@ -75,3 +75,15 @@
 * Default Kafka partitioner, keys sẽ được sử dụng thuật toán "murmur2 algorithm"
 ```
 <img src="/image/Kafka Theory/Kafka_Message_Hashing.png" alt="Kafka message hashing">
+
+### Kafka Consumers
+```bash
+* Consumers đọc data từ topic (xác định qua name của topic) - pull model
+* Cách đọc dữ liệu theo kiểu pull model là consumer gửi yêu cầu đọc dữ liệu từ kafka brokers, server sao đó chúng sẽ trả data
+* Consumers tự động biết được broker nào để đọc
+* Nếu broker bị hỏng, consumers sẽ biết cách khôi phục
+* Data được đọc lần lượt từ thấp tới cao trong một partitions
+* Nếu consumers đọc dữ liệu từ 2 partitions trở lên thì sẽ không bảo toàn việc lấy từ thấp đến cao mà chỉ đảm bảo từ thấp đến
+  cao trong 1 partitions
+```
+<img src="/image/Kafka Theory/Kafka_Consumers.png" alt="Kafka Consumer">
