@@ -3,6 +3,9 @@
 ## [Website Apache Kafka](https://kafka.apache.org/)  
 ## [Course Udemy](https://www.udemy.com/course/apache-kafka/)
 
+### Kafka Architecture
+
+
 ### Kafka Topics
 
 ```bash
