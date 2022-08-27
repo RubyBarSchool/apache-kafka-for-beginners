@@ -100,3 +100,11 @@
 * Kiểu Serialization/deserialization không được thay đổi trong vòng đời của một topic. Đó là lý do tại sao không được phép     thay đổi dữ liệu trong topic vì nếu consumer sử dụng deserialization int mà người dùng sửa dữ liệu thành chuỗi thì sẽ bị     lỗi
 ```
 <img src="/image/Kafka Theory/Kafka_Consumers_Deserializer.png" alt="Kafka Consumer deserializer">
+
+
+### Kafka Consumer Group
+```bash
+* Tất cả consumers trong hệ thống đều đọc data như một consumer groups
+* Một consumer sẽ ở trong một nhóm để đọc dữ liệu từ partitions độc quyền
+```
+<img src="/image/Kafka Theory/Kafka_Consumers_Group.png" alt="Kafka Consumer group">
