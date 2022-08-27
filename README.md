@@ -122,3 +122,13 @@
 * Tạo ra các consumer groups khác nhau, sử dụng consumer property group.id
 ```
 <img src="/image/Kafka Theory/Multiple_Consumers_On_One_Topic.png" alt="Multiple Consumer on one Topic">
+
+#### Kafka Consumer Group:  Cunsumer Offsets
+```bash
+* Kafka lưu trữ một offset nơi mà một consumer group có thể đọc được nó gọi là consumer offset
+* Offsets này nằm trong kafka topic với tên là __consumer_offsets
+* Khi một consumer trong group xử lý nhận data trả về từ kafka, nó phải periodically gửi consumer offset (Kafka broker sẽ viết __consumer_offsets) báo cho kafka là mình đã nhận thành công data
+* Nếu có một consumers chết, sau đó quay trở lại và có thể đọc được tin nhắn từ committed consumer offsets
+Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ liệu bắt đầu từ đây
+```
+<img src="/image/Kafka Theory/Kafka_Consumers_Offsets.png" alt="Consumer Offsets">
