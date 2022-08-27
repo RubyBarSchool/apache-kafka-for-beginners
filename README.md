@@ -110,8 +110,15 @@
 ```
 <img src="/image/Kafka Theory/Kafka_Consumers_Group.png" alt="Kafka Consumer group">
 
-#### Kafka Consumer Group:  consumer more than partitions.
+#### Kafka Consumer Group:  Consumer more than partitions.
 ```bash
 * Nếu tồn tại nhiều consumer hơn partitions thì một số consumer sẽ thành inactive
 ```
 <img src="/image/Kafka Theory/Kafka_Consumers_Group_Consumer_More_Than_Partitions.png" alt="Kafka Consumer group consumer more than partitions">
+
+#### Kafka Consumer Group:  Multiple Consumers on one topic
+```bash
+* Trong apache kafka chấp nhận có nhiều consumer groups có cùng topic
+* Tạo ra các consumer groups khác nhau, sử dụng consumer property group.id
+```
+<img src="/image/Kafka Theory/Multiple_Consumers_On_One_Topic.png" alt="Multiple Consumer on one Topic">
