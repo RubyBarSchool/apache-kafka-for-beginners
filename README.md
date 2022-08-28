@@ -168,3 +168,11 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 * Broker không có tất cả dữ liệu, nó chỉ có dữ liệu mà nó có như ví dụ broker 103 khoogn có data của topic B chỉ có data của   topic A
 ```
 <img src="/image/Kafka Theory/Kafka_Brokers_And_Topics.png" alt="Kafka Brokers And Topics">
+
+#### Kafka Brokers Discovery
+```bash
+* Mọi kafka brker trong kafka cluster đểu được gọi là bootstrap serve
+* Chỉ cần connect tới 1 broker khi đó kafka client sẽ được biết cách connect tới tất cả các broker có trong kafka cluster       (smart client)
+* Mỗi một broker trong kafka cluster đều biết tất cả brokers, topic và partitions (metadata) còn lại trong kafka cluster
+```
+<img src="/image/Kafka Theory/Kafka_Brokers_Discovery.png" alt="Kafka Brokers Discovery">
