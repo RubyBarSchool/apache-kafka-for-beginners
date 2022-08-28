@@ -149,3 +149,14 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
     * For Kafka => External System workflows: Sử dụng idempotent consumer
 ```
 <img src="/image/Kafka Theory/Delivery_Semantics_For_Consumers.png" alt="Delivery semantics for consumers">
+
+#### Kafka Brokers
+```bash
+* Một Kafka cluster là một composed của nhiều brokers (servers)
+* Mỗi một broker được định danh bằng ID (Integer)
+* Mỗi một broker chỉ chứa duy nhất 1 topic partitions => dữ liệu sẽ được phân tán ra toàn bộ brokers
+* Sau khi kết nối với bất kì một broker nào (a bootstrap broker) thì clients or producers or consumers
+  sẽ được connect hoặc biết cách connect đến toàn bộ kafka cluster. Đây là tiện thứ tiện lợi vì không cần phải biết toàn bộ
+  kafka cluster mà chỉ cần kết nối với 1 broker khi đó sẽ có thể kết nối với tất cả.
+```
+<img src="/image/Kafka Theory/Kafka_Brokers.png" alt="Kafka Brokers">
