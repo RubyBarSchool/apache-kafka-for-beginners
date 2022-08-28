@@ -187,3 +187,14 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 ```
 <img src="/image/Kafka Theory/Kafka_Topic_Replication_Factor.png" alt="Kafka Topic replication factor">
 
+
+#### Kafka Concept of Leader for a Partition
+```bash
+* Trong cùng một thời gian thì chỉ có duy nhất 1 broker có thể làm leader cho một partition
+* Producers chỉ có thể send data cho broker là leader của partition
+* Các brokers sẽ sao chép data từ broker leader
+* Một partition chỉ có 1 lead và có nhiều multiple ISR (in-sync replica)
+* Từ Kafka v2.4+ thì consummer được thêm một tính năng là có thể đọc data từ ISR bản sao thay vì đọc dữ liệu mặc định
+```
+<img src="/image/Kafka Theory/Kafka_Concept_Of_Leader_For_A_Partition.png" alt="Kafka Concept of Leader for a Partition">
+<img src="/image/Kafka Theory/Kafka_Consumers_Replica_Fetching_V2-4.png" alt="Kafka Consumers Replica Fetching">
