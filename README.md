@@ -208,3 +208,15 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
   * acks = all: Producer sẽ đơpị broker leader and replica(ISR) ghi dữ liệu xong báo lại (Không mất được data)
 ```
 <img src="/image/Kafka Theory/Kafka_Producer_Acknowledgements.png" alt="Kafka Producer Acknowledgements">
+
+#### Zookeeper
+```bash
+* Zookeeper quản lý các brokers
+* Zookeeper giúp xác định là leader cho các partitions
+* Zookeeper giúp gửi thông báo đến Kafka trong các trường hợp thay đổi
+  (Ví dụ: tạo mới topic, broker dies, broker comes up, delete topics, etc...)
+* Kafka 2.x không làm việc với zookeeper
+* Kafka 3.x có thể làm việc với Zookeeper (KIP-500) - Kafka Raft
+* Kafka 4.x sẽ không có Zookeeper
+```
+<img src="/image/Kafka Theory/Zookeeper.png" alt="Zookeeper">
