@@ -160,3 +160,11 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
   kafka cluster mà chỉ cần kết nối với 1 broker khi đó sẽ có thể kết nối với tất cả.
 ```
 <img src="/image/Kafka Theory/Kafka_Brokers.png" alt="Kafka Brokers">
+
+#### Kafka Brokers And Topics
+```bash
+* Tất cả các topic dẽ được phân phối theo dạng dàn đều ra các brokers nhưng không theo thứ tự nào cả.
+* Một broker có thể chứ nhiều topics
+* Broker không có tất cả dữ liệu, nó chỉ có dữ liệu mà nó có như ví dụ broker 103 khoogn có data của topic B chỉ có data của   topic A
+```
+<img src="/image/Kafka Theory/Kafka_Brokers_And_Topics.png" alt="Kafka Brokers And Topics">
