@@ -198,3 +198,13 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 ```
 <img src="/image/Kafka Theory/Kafka_Concept_Of_Leader_For_A_Partition.png" alt="Kafka Concept of Leader for a Partition">
 <img src="/image/Kafka Theory/Kafka_Consumers_Replica_Fetching_V2-4.png" alt="Kafka Consumers Replica Fetching">
+
+#### Kafka Producer Acknowledgements (acks)
+```bash
+* Producers có thể nhận được xác thực dữ liệu đã ghi
+* Producers sẽ được Kafka broker báo là dữ liệu đã ghi thành công
+  * acks = 0: Producer không đợi xác thực báo lại đó (Trường hợp này rất dễ bị mất dữ liệu)
+  * acks = 1: Producer sẽ đợi broker leader ghi dữ liệu xong báo lại (Giới hạn trường hợp mất data)
+  * acks = all: Producer sẽ đơpị broker leader and replica(ISR) ghi dữ liệu xong báo lại (Không mất được data)
+```
+<img src="/image/Kafka Theory/Kafka_Producer_Acknowledgements.png" alt="Kafka Producer Acknowledgements">
