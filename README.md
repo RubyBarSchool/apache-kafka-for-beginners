@@ -220,3 +220,18 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 * Kafka 4.x sẽ không có Zookeeper
 ```
 <img src="/image/Kafka Theory/Zookeeper.png" alt="Zookeeper">
+
+#### Kafka KRaft
+```bash
+* 2020, Apache Kafka project bắt đầu xóa bỏ Zookeeper dependency 
+* Zookeeper có một vấn đề liên quan đến scaling khi Kafka clusters chứa hown 100,000 partitions
+* Loại bỏ Zookeeper Apache Kafka có thể Sale tới hàng triệu partitions, và dễ dàng maintain và set-up
+* Cài thiện stability, và làm cho dễ dàng monitor, support and administer
+* Đồng nhất một mô hình security cho cả hệ thống
+* Dễ dàng hơn khi bắt đầu với Kafka
+* Thời gian tắt và khởi động nhanh hơn đáng kể
+* Từ Kafka 3.x đã thay thế Zookeeper bằng The Raft Protocol (KRaft)
+```
+<img src="/image/Kafka Theory/Kafka_KRaft.png" alt="Kafka KRaft">
+<img src="/image/Kafka Theory/Kafka_KRaft_Architecture.png" alt="Kafka KRaft Architecture">
+<img src="/image/Kafka Theory/Kafka_KRaft_Performance.png" alt="Kafka KRaft Performance">
