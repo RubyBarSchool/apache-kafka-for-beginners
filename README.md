@@ -238,3 +238,34 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 <img src="/image/Kafka Theory/Kafka_KRaft.png" alt="Kafka KRaft">
 <img src="/image/Kafka Theory/Kafka_KRaft_Architecture.png" alt="Kafka KRaft Architecture">
 <img src="/image/Kafka Theory/Kafka_KRaft_Performance.png" alt="Kafka KRaft Performance">
+
+#### SETUP Kafka Environment
+```bash
+* Setup wsl2 in windows
+
+* Setup java 11 
+
+wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - 
+sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
+sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
+
+* Download Apache Kafka
+  Go to page: https://kafka.apache.org/quickstart
+  
+* Extract
+
+  tar xzf kafka_(version).tgz
+  mv kafka_(version) ~
+* Set up $PATH envuronment vảiable
+  pwd: get path
+  PATH="$PATH:x/x/x/bin"
+
+* Run Zookeeper
+
+  zookeeper-server-start.sh ~/(path folder apache kafka)/config/zookeeper.properties
+  (-daemon if run Zookeeper in deamon mode)
+  
+* Run Kafka
+
+  kafka-server-start.sh ~/(path folder apache kafka)/config/server.properties
+```
