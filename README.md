@@ -176,3 +176,14 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 * Mỗi một broker trong kafka cluster đều biết tất cả brokers, topic và partitions (metadata) còn lại trong kafka cluster
 ```
 <img src="/image/Kafka Theory/Kafka_Brokers_Discovery.png" alt="Kafka Brokers Discovery">
+
+#### Kafka Topic replication factor
+```bash
+* Topics nên có nhiều hơn 1 bản sao (usually between 2 and 3)
+* Mục đích dùng để nếu broker bị hỏng, thì có một broker khác để có thể thay thế
+
+* Trong cùng một thời gian thì chỉ có duy nhất 1 broker có thể làm leader cho một partition
+* Producers chỉ có thể send data cho broker là leader của partition
+```
+<img src="/image/Kafka Theory/Kafka_Topic_Replication_Factor.png" alt="Kafka Topic replication factor">
+
