@@ -320,4 +320,21 @@ Note: the first subscribe topic, it's going to read at the end of the topic. all
 
 * kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic> --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --from-beginning: read all message in topic from topic created with format (time,key,value)
 
+* kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic> --group <name group>: read message of <name topic> with group consumer
+
+Note: 
+- Khi có biến động bất kỳ nào trong group consumer thì kafka sẽ chủ động rebalancing để bảo toàn dữ liệu không bị mất hoặc ảnh hưởng
+- Khi đã khai báo consumer dạng group thì không được cho property --from-beginning bở vì group consumer chỉ được phép đọc từ offset
+- Nếu có các group khác nhau cùng đọc dữ liệu từ một topic thì topic đó sẽ send song song message tới cả 2 group. Khác với việc send lần lượt các consumer trong cùng một group
+```
+
+
+#### Kafka Consumer Group
+
+```bash
+* kafka-consumer-groups.sh: show all description of consumer groups cli
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list: get all consumer group in kafka server
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group <name consumer groups>: get description consumer group <name consumer group> (group, topic, partition, current-offset, log-end-offset, lag, consumer-id, host, client-id)
 ```
