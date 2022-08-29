@@ -337,4 +337,15 @@ Note:
 * kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list: get all consumer group in kafka server
 
 * kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group <name consumer groups>: get description consumer group <name consumer group> (group, topic, partition, current-offset, log-end-offset, lag, consumer-id, host, client-id)
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --to-earliest: show all description of reset offset to the beginning
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --to-earliest --execute: show all description of execute reset offset to the beginning 
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --to-earliest --topic <name topic> --execute: reset offset of <name topic> to the beginning
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --to-earliest --all-topics --execute: reset offset of all topic in <name consumer group> to the beginning
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --shift-by <number> --topic <name topic> --execute :
+reset offset of <name topic> by <number> (forward/backward)(+number/-number)
 ```
