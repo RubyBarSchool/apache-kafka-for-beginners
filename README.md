@@ -139,7 +139,7 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 #### Kafka Consumer Group:  Delivery semantics for consumers
 ```bash
 * Mặc định, Java Consumer sẽ tự động xác nhận consumer offset (Ít nhất 1 lần)
-* Nếu cọn commit thử công thì có 3 loại delivery semantics
+* Nếu commit thủ công thì có 3 loại delivery semantics
   * At least once (usually preferred)
     * Offsets committed sau khi message xử lý xong
     * Nếu quá trình xử lý xảy ra lỗi, the message sẽ được đọc lại
@@ -294,7 +294,7 @@ sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
 #### Kafka Producer
 
 ```bash
-* kafka-console-producer.sh show all description of kafka producer cli
+* kafka-console-producer.sh: show all description of kafka producer cli
 
 * kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic>: write message to topic 
 Note: 
@@ -306,4 +306,18 @@ Note:
 
 * kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic> --property parse.key=true --property key.separator=:  : write message to topic with property key is : in message should have :
 Note: if message dont have key then thrown exception 
+```
+
+#### Kafka Consumer
+
+```bash
+* kafka-console-consumer.sh: show all description of kafka consumer cli
+
+* kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic>: read message of <name topic>
+Note: the first subscribe topic, it's going to read at the end of the topic. all message send after time consumer subscribe to send consumer
+
+* kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic> --from-beginning: read all message in topic from topic created
+
+* kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic> --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --from-beginning: read all message in topic from topic created with format (time,key,value)
+
 ```
