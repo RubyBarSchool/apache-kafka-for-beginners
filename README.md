@@ -314,7 +314,7 @@ Note: if message dont have key then thrown exception
 * kafka-console-consumer.sh: show all description of kafka consumer cli
 
 * kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic>: read message of <name topic>
-Note: the first subscribe topic, it's going to read at the end of the topic. all message send after time consumer subscribe to send consumer
+Note: the first subscribe topic, its going to read at the end of the topic. all message send after time consumer subscribe to send consumer
 
 * kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic> --from-beginning: read all message in topic from topic created
 
