@@ -208,7 +208,7 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 * Producers sẽ được Kafka broker báo là dữ liệu đã ghi thành công
   * acks = 0: Producer không đợi xác thực báo lại đó (Trường hợp này rất dễ bị mất dữ liệu)
   * acks = 1: Producer sẽ đợi broker leader ghi dữ liệu xong báo lại (Giới hạn trường hợp mất data)
-  * acks = all: Producer sẽ đơpị broker leader and replica(ISR) ghi dữ liệu xong báo lại (Không mất được data)
+  * acks = all: Producer sẽ đơị broker leader and replica(ISR) ghi dữ liệu xong báo lại (Không mất được data)
 ```
 <img src="/image/Kafka Theory/Kafka_Producer_Acknowledgements.png" alt="Kafka Producer Acknowledgements">
 
@@ -274,7 +274,7 @@ sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
 #### Kafka topics
 
 ```bash
-* Kafka-topics.sh : show all description of kafka topic
+* kafka-topics.sh : show all description of kafka topic cli
 
 * kafka-topic.sh --bootstrap-server localhost:9092 --list : get all topic in server kafka host: localhost, port: 9092
 
@@ -289,5 +289,21 @@ sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
 * kafka-topic.sh --bootstrap-server localhost:9092 --describe: show all description of all topic in kafka server (name, partition, leader, replicas, Isr)
  
 * kafka-topic.sh --bootstrap-server localhost:9092 --delete --topic <name topic> : delete topic <name topic>
+```
 
+#### Kafka Producer
+
+```bash
+* kafka-console-producer.sh show all description of kafka producer cli
+
+* kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic>: write message to topic 
+Note: 
+- if you want exit, you use Ctrl + C to exit the producer
+- if producer to a non existing topic then kafka server create topic before send message
+
+* kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic> --producer-property acks=all: write message to topic with property of producer (acks)
+
+
+* kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic> --property parse.key=true --property key.separator=:  : write message to topic with property key is : in message should have :
+Note: if message dont have key then thrown exception 
 ```
