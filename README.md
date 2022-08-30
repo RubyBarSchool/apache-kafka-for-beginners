@@ -139,7 +139,7 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 #### Kafka Consumer Group:  Delivery semantics for consumers
 ```bash
 * Mặc định, Java Consumer sẽ tự động xác nhận consumer offset (Ít nhất 1 lần)
-* Nếu cọn commit thử công thì có 3 loại delivery semantics
+* Nếu commit thủ công thì có 3 loại delivery semantics
   * At least once (usually preferred)
     * Offsets committed sau khi message xử lý xong
     * Nếu quá trình xử lý xảy ra lỗi, the message sẽ được đọc lại
@@ -208,7 +208,7 @@ Lúc đó kafka sẽ nói veowis consumer là có thể đọc được dữ li�
 * Producers sẽ được Kafka broker báo là dữ liệu đã ghi thành công
   * acks = 0: Producer không đợi xác thực báo lại đó (Trường hợp này rất dễ bị mất dữ liệu)
   * acks = 1: Producer sẽ đợi broker leader ghi dữ liệu xong báo lại (Giới hạn trường hợp mất data)
-  * acks = all: Producer sẽ đơpị broker leader and replica(ISR) ghi dữ liệu xong báo lại (Không mất được data)
+  * acks = all: Producer sẽ đơị broker leader and replica(ISR) ghi dữ liệu xong báo lại (Không mất được data)
 ```
 <img src="/image/Kafka Theory/Kafka_Producer_Acknowledgements.png" alt="Kafka Producer Acknowledgements">
 
@@ -274,7 +274,7 @@ sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
 #### Kafka topics
 
 ```bash
-* Kafka-topics.sh : show all description of kafka topic
+* kafka-topics.sh : show all description of kafka topic cli
 
 * kafka-topic.sh --bootstrap-server localhost:9092 --list : get all topic in server kafka host: localhost, port: 9092
 
@@ -289,5 +289,63 @@ sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
 * kafka-topic.sh --bootstrap-server localhost:9092 --describe: show all description of all topic in kafka server (name, partition, leader, replicas, Isr)
  
 * kafka-topic.sh --bootstrap-server localhost:9092 --delete --topic <name topic> : delete topic <name topic>
+```
 
+#### Kafka Producer
+
+```bash
+* kafka-console-producer.sh: show all description of kafka producer cli
+
+* kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic>: write message to topic 
+Note: 
+- if you want exit, you use Ctrl + C to exit the producer
+- if producer to a non existing topic then kafka server create topic before send message
+
+* kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic> --producer-property acks=all: write message to topic with property of producer (acks)
+
+
+* kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic> --property parse.key=true --property key.separator=:  : write message to topic with property key is : in message should have :
+Note: if message dont have key then thrown exception 
+```
+
+#### Kafka Consumer
+
+```bash
+* kafka-console-consumer.sh: show all description of kafka consumer cli
+
+* kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic>: read message of <name topic>
+Note: the first subscribe topic, its going to read at the end of the topic. all message send after time consumer subscribe to send consumer
+
+* kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic> --from-beginning: read all message in topic from topic created
+
+* kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic> --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --from-beginning: read all message in topic from topic created with format (time,key,value)
+
+* kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name topic> --group <name group>: read message of <name topic> with group consumer
+
+Note: 
+- Khi có biến động bất kỳ nào trong group consumer thì kafka sẽ chủ động rebalancing để bảo toàn dữ liệu không bị mất hoặc ảnh hưởng
+- Khi đã khai báo consumer dạng group thì không được cho property --from-beginning bở vì group consumer chỉ được phép đọc từ offset
+- Nếu có các group khác nhau cùng đọc dữ liệu từ một topic thì topic đó sẽ send song song message tới cả 2 group. Khác với việc send lần lượt các consumer trong cùng một group
+```
+
+
+#### Kafka Consumer Group
+
+```bash
+* kafka-consumer-groups.sh: show all description of consumer groups cli
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list: get all consumer group in kafka server
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group <name consumer groups>: get description consumer group <name consumer group> (group, topic, partition, current-offset, log-end-offset, lag, consumer-id, host, client-id)
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --to-earliest: show all description of reset offset to the beginning
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --to-earliest --execute: show all description of execute reset offset to the beginning 
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --to-earliest --topic <name topic> --execute: reset offset of <name topic> to the beginning
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --to-earliest --all-topics --execute: reset offset of all topic in <name consumer group> to the beginning
+
+* kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group <name consumer group> --reset-offsets --shift-by <number> --topic <name topic> --execute :
+reset offset of <name topic> by <number> (forward/backward)(+number/-number)
 ```
