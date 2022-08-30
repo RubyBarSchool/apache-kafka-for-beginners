@@ -100,7 +100,7 @@
    * Int, Float
    * Avro
    * Protobuf
-* Kiểu Serialization/deserialization không được thay đổi trong vòng đời của một topic. Đó là lý do tại sao không được phép     thay đổi dữ liệu trong topic vì nếu consumer sử dụng deserialization int mà người dùng sửa dữ liệu thành chuỗi thì sẽ bị     lỗi
+* Kiểu Serialization/deserialization không được thay đổi trong vòng đời của một topic. Đó là lý do tại sao không được phép     thay đổi dữ liệu trong topic vì nếu consumer sử dụng deserialization int mà người dùng sửa dữ liệu thành chuỗi thì sẽ bị lỗi
 ```
 <img src="/image/Kafka Theory/Kafka_Consumers_Deserializer.png" alt="Kafka Consumer deserializer">
 
@@ -289,6 +289,7 @@ sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
 * kafka-topic.sh --bootstrap-server localhost:9092 --describe: show all description of all topic in kafka server (name, partition, leader, replicas, Isr)
  
 * kafka-topic.sh --bootstrap-server localhost:9092 --delete --topic <name topic> : delete topic <name topic>
+Note: If after deleting, an error occurs when starting zookeeper and starting kafka, you must delete the log files of zookeeper and kafka.
 ```
 
 #### Kafka Producer
@@ -303,9 +304,9 @@ Note:
 
 * kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic> --producer-property acks=all: write message to topic with property of producer (acks)
 
-
 * kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic> --property parse.key=true --property key.separator=:  : write message to topic with property key is : in message should have :
-Note: if message dont have key then thrown exception 
+Note: if message dont have key then thrown exception
+
 ```
 
 #### Kafka Consumer
