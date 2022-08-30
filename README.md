@@ -306,7 +306,15 @@ Note:
 
 * kafka-console-producer.sh --bootstrap-server localhost:9092 --topic <name topic> --property parse.key=true --property key.separator=:  : write message to topic with property key is : in message should have :
 Note: if message dont have key then thrown exception
+```
 
+
+#### Kafka Partition Sticky
+
+<img src="/image/Kafka Theory/Kafka_Producer_With_Callback.png" alt="Kafka partition Sticky">
+
+```bash
+Note: if producer send many message at time
 ```
 
 #### Kafka Consumer
