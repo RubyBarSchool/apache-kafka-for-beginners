@@ -25,7 +25,11 @@ public class ConsumerDemo {
 
         String bootstrapServer = "127.0.0.1:9092";
         String groupId = "my-second-application";
-        String autoOffset = "none"; //earliest,latest
+        String autoOffset = "none";
+        // none: throw exception to the consumer if no previous offset is found for the consumer's group.
+        // earliest: automatically reset the offset to the earliest offset.
+        // latest: automatically reset the offset to the latest offset.
+        // anything else: throw exception to the consumer.
         String topic = "demo_topic";
 
         Properties properties = new Properties();
