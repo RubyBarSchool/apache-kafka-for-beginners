@@ -38,11 +38,11 @@ public class ConsumerDemo {
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG,groupId);
         properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,autoOffset);
-
+        //create consumer
         KafkaConsumer<String,String> consumer = new KafkaConsumer<>(properties);
-
+        // subscribe consumer to our topics(s)
         consumer.subscribe(Arrays.asList(topic));
-
+        // poll for new data
         while (true){
             log.info("Polling");
 
